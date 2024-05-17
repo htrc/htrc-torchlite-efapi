@@ -1,0 +1,21 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+### NoDocs ###
+GET   /docs/swagger-ui/*file        controllers.Assets.at(path: String = "/public/lib/swagger-ui", file: String)
+
+### NoDocs ###
+GET   /assets/*file                 controllers.Assets.versioned(path = "/public", file: Asset)
+
+#GET     /swagger.json                   controllers.Assets.at(path = "/public", file = "swagger.json")
+
+GET     /health/liveness                controllers.HealthController.livenessCheck
+GET     /health/readiness               controllers.HealthController.readynessCheck
+
+POST    /worksets                       controllers.EfController.createWorkset()
+GET     /worksets/:id                   controllers.EfController.getWorkset(id)
+DELETE  /worksets/:id                   controllers.EfController.deleteWorkset(id)
+GET     /worksets/:id/volumesAggNoPos   controllers.EfController.getWorksetVolumesAggNoPos(id, fields: Option[String] ?= None)
+GET     /worksets/:id/worksetAggNoPos   controllers.EfController.getWorksetAggNoPos(id, fields: Option[String] ?= None)
+GET     /worksets/:id/metadata          controllers.EfController.getWorksetVolumesMetadata(id, fields: Option[String] ?= None)
