@@ -1,4 +1,4 @@
-[![CD](https://github.com/htrc/htrc-torchlite-efapi/actions/workflows/cd.yml/badge.svg)](https://github.com/htrc/htrc-torchlite-efapi/actions/workflows/cd.yml)
+[![CI](https://github.com/htrc/htrc-torchlite-efapi/actions/workflows/ci.yml/badge.svg)](https://github.com/htrc/htrc-torchlite-efapi/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/github/htrc/htrc-torchlite-efapi/graph/badge.svg?token=rgD3mVxFTG)](https://codecov.io/github/htrc/htrc-torchlite-efapi)
 [![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/htrc/htrc-torchlite-efapi?include_prereleases&sort=semver)](https://github.com/htrc/htrc-torchlite-efapi/releases/latest)
 
