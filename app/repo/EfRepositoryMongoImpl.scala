@@ -27,21 +27,65 @@ class EfRepositoryMongoImpl @Inject()(val reactiveMongoApi: ReactiveMongoApi)
 
   protected def featuresAggNoPosCol: Future[BSONCollection] =
     reactiveMongoApi.database.map(_.collection[BSONCollection]("featuresAggNoPos"))
+
   protected def metadataCol: Future[BSONCollection] =
     reactiveMongoApi.database.map(_.collection[BSONCollection]("metadata"))
+
   protected def worksetsCol: Future[BSONCollection] =
     reactiveMongoApi.database.map(_.collection[BSONCollection]("worksets"))
 
 
+  // db.metadata.aggregate([
+  //     {
+  //         $match: {
+  //             htid: { $in: ['hvd.32044019369404', 'inu.30000094605429'] }
+  //         }
+  //     },
+  //     {
+  //         $lookup: {
+  //             from: 'featuresAggNoPos',
+  //             localField: 'htid',
+  //             foreignField: 'htid',
+  //             pipeline: [
+  //                 { $project: { _id: 0 } },
+  //                 { $replaceRoot: { newRoot: '$features' } }
+  //             ],
+  //             as: 'features'
+  //         }
+  //     },
+  //     {
+  //         $unwind: '$features'
+  //     }
+  // ])
+  //
   override def getVolumesAggNoPos(ids: IdSet, fields: List[String] = List.empty): Future[List[JsObject]] = {
-    val query = if (ids.isEmpty) document() else document("htid" -> document("$in" -> ids))
     val projFields = BSONDocument(fields.map(f => f -> BSONInteger(1)))
-    val projection = document("_id" -> 0) ++ projFields
 
-    featuresAggNoPosCol
-      .map(_.find(query, Some(projection)))
-      .map(_.cursor[JsObject]())
-      .flatMap(_.collect[List]())
+    for {
+      metadata <- metadataCol
+      features <- featuresAggNoPosCol
+      volumes <- metadata.aggregateWith[JsObject]() { framework =>
+        import framework._
+
+        val query = if (ids.isEmpty) document() else document("htid" -> document("$in" -> ids))
+
+        List(
+          Match(query),
+          LookupPipeline(
+            from = features.name,
+            let = document("htid" -> "$htid"),
+            pipeline = List(
+              Match(document("$expr" -> document("$eq" -> List("$htid", """$$htid""")))),
+              Project(document("_id" -> 0)),
+              ReplaceRootField("features")
+            ),
+            as = "features"
+          ),
+          UnwindField("features"),
+          Project(document("_id" -> 0) ++ projFields)
+        )
+      }.collect[List]()
+    } yield volumes
   }
 
   override def getWorksetAggNoPos(ids: IdSet, fields: List[String] = List.empty): Future[List[JsObject]] =

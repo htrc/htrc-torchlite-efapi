@@ -1,6 +1,6 @@
-[![CD](https://github.com/htrc/htrc-torchlite-efapi/actions/workflows/cd.yml/badge.svg)](https://github.com/htrc/htrc-torchlite-efapi/actions/workflows/cd.yml)
-[![codecov](https://codecov.io/gh/htrc/HTRC-EF-API/graph/badge.svg?token=SHgcExcM7o)](https://codecov.io/gh/htrc/HTRC-EF-API)
-[![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/htrc/HTRC-EF-API?include_prereleases&sort=semver)](https://github.com/htrc/HTRC-EF-API/releases/latest)
+[![CI](https://github.com/htrc/htrc-torchlite-efapi/actions/workflows/ci.yml/badge.svg)](https://github.com/htrc/htrc-torchlite-efapi/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/github/htrc/htrc-torchlite-efapi/graph/badge.svg?token=rgD3mVxFTG)](https://codecov.io/github/htrc/htrc-torchlite-efapi)
+[![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/htrc/htrc-torchlite-efapi?include_prereleases&sort=semver)](https://github.com/htrc/htrc-torchlite-efapi/releases/latest)
 
 # HTRC-Torchlite-EFAPI
 An API for accessing aggregated EF data for Torchlite
