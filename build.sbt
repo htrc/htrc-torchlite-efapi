@@ -70,8 +70,8 @@ lazy val dockerSettings = Seq(
   dockerRepository := Some("docker.htrc.illinois.edu"),
   dockerUpdateLatest := true,
   Universal / javaOptions ++= Seq(
-    "-Xmx8G",
-    "-Xss1M",
+    "-J-Xmx8G",
+    "-J-Xss1M",
     // don't write any pid files
     "-Dpidfile.path=/dev/null",
     // reference a logback config file that has no file appenders
