@@ -16,6 +16,6 @@ GET     /health/readiness               controllers.HealthController.readinessCh
 POST    /worksets                       controllers.EfController.createWorkset()
 GET     /worksets/:id                   controllers.EfController.getWorkset(id)
 DELETE  /worksets/:id                   controllers.EfController.deleteWorkset(id)
-GET     /worksets/:id/volumesAggNoPos   controllers.EfController.getWorksetVolumesAggNoPos(id, fields: Option[String] ?= None)
-GET     /worksets/:id/worksetAggNoPos   controllers.EfController.getWorksetAggNoPos(id, fields: Option[String] ?= None)
+GET     /worksets/:id/volumes           controllers.EfController.getWorksetVolumesAggNoPos(id, fields: Option[String] ?= None)
+GET     /worksets/:id/volumes/aggregated    controllers.EfController.getWorksetAggNoPos(id, fields: Option[String] ?= None)
 GET     /worksets/:id/metadata          controllers.EfController.getWorksetVolumesMetadata(id, fields: Option[String] ?= None)
