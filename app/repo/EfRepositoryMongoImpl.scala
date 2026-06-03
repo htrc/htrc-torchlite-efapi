@@ -59,7 +59,7 @@ class EfRepositoryMongoImpl @Inject()(val reactiveMongoApi: ReactiveMongoApi)
   // ])
   //
   override def getVolumesAggNoPos(ids: IdSet, fields: List[String] = List.empty): Future[List[JsObject]] = {
-    logger.debug(ids)
+    logger.debug(s"getVolumeAggNoPos ids: ${ids}")
     val projFields = BSONDocument(fields.map(f => f -> BSONInteger(1)))
 
     for {
