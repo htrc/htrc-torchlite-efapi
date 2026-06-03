@@ -70,8 +70,10 @@ class EfRepositoryMongoImpl @Inject()(val reactiveMongoApi: ReactiveMongoApi)
 
         val query = if (ids.isEmpty) document() else document("htid" -> document("$in" -> ids))
         logger.debug(s"Sending query: ${BSONDocument.pretty(query)}")
-        logger.debug(s"Features: ${features.foreach(println)}")
-        logger.debug(s"Metadata: ${metadata.foreach(println)}")
+        logger.debug(s"Features: \n")
+        features.foreach(println)
+        logger.debug(s"Metadata: \n")
+        metadata.foreach(println)
 
         List(
           Match(query),
