@@ -69,7 +69,7 @@ class EfRepositoryMongoImpl @Inject()(val reactiveMongoApi: ReactiveMongoApi)
         import framework._
 
         val query = if (ids.isEmpty) document() else document("htid" -> document("$in" -> ids))
-        logger.debug(s"Sending query: ${query.toString()}")
+        logger.debug(s"Sending query: ${query.toMap()}")
 
         List(
           Match(query),
