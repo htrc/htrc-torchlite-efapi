@@ -59,7 +59,6 @@ class EfRepositoryMongoImpl @Inject()(val reactiveMongoApi: ReactiveMongoApi)
   // ])
   //
   override def getVolumesAggNoPos(ids: IdSet, fields: List[String] = List.empty): Future[List[JsObject]] = {
-    logger.debug(s"getVolumeAggNoPos ids: ${ids}")
     val projFields = BSONDocument(fields.map(f => f -> BSONInteger(1)))
 
     for {
@@ -69,9 +68,6 @@ class EfRepositoryMongoImpl @Inject()(val reactiveMongoApi: ReactiveMongoApi)
         import framework._
 
         val query = if (ids.isEmpty) document() else document("htid" -> document("$in" -> ids))
-        logger.debug(s"Sending query: ${BSONDocument.pretty(query)}")
-        logger.debug(s"Features: ${BSONDocument.pretty(features)}")
-        logger.debug(s"Metadata: ${BSONDocument.pretty(metadata)}")
 
         List(
           Match(query),
