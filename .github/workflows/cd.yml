@@ -39,6 +39,8 @@ jobs:
           java-version: '${{ env.JAVA_VERSION }}'
           distribution: 'temurin'
           cache: 'sbt'
+      - name: Set up sbt
+        uses: sbt/setup-sbt@v1
       - name: Generate Dockerfile
         run: sbt "Docker/stage"
       - name: Show GitHub context
