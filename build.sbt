@@ -38,7 +38,7 @@ lazy val ammoniteSettings = Seq(
       val version = scalaBinaryVersion.value match {
         case "2.10" => "1.0.3"
         case "2.11" => "1.6.7"
-        case _ ⇒  "3.0.0-M1-19-a7973e17"
+        case _ ⇒  "3.0.5"
       }
       "com.lihaoyi" % "ammonite" % version % Test cross CrossVersion.full
     },
