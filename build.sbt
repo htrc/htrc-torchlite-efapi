@@ -109,7 +109,7 @@ lazy val `torchlite-ef-api` = (project in file("."))
       "org.reactivemongo"             %% "reactivemongo-akkastream"         % "1.0.10",
       "io.swagger"                    %  "swagger-annotations"              % "1.6.14",
       "org.webjars"                   %  "swagger-ui"                       % "5.17.2",
-      "org.scalatestplus.play"        %% "scalatestplus-play"               % "7.0.1"   % Test
+      "org.scalatestplus.play"        %% "scalatestplus-play"               % "7.0.2"   % Test
     ),
     routesGenerator := InjectedRoutesGenerator
   )
