@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 env:
   HTRC_NEXUS_DRHTRC_PWD: ${{ secrets.HTRC_NEXUS_DRHTRC_PWD }}
