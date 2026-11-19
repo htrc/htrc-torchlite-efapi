@@ -101,6 +101,10 @@ lazy val `torchlite-ef-api` = (project in file("."))
   .settings(swaggerSettings)
   .settings(
     name := "HTRC-Torchlite-EFAPI",
+    excludeDependencies ++= Seq(
+      ExclusionRule("org.seleniumhq.selenium", "htmlunit-driver"),
+      ExclusionRule("net.sourceforge.htmlunit", "htmlunit")
+    ),
     libraryDependencies ++= Seq(
       guice,
       filters,
@@ -109,7 +113,8 @@ lazy val `torchlite-ef-api` = (project in file("."))
       "org.reactivemongo"             %% "reactivemongo-akkastream"         % "1.0.10",
       "io.swagger"                    %  "swagger-annotations"              % "1.6.14",
       "org.webjars"                   %  "swagger-ui"                       % "5.17.2",
-      "org.scalatestplus.play"        %% "scalatestplus-play"               % "7.0.2"   % Test
+      "org.scalatestplus.play"        %% "scalatestplus-play"               % "7.0.2"   % Test,
+      "org.seleniumhq.selenium"       %  "htmlunit3-driver"                 % "4.14.0"  % Test
     ),
     routesGenerator := InjectedRoutesGenerator
   )
