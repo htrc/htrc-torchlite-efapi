@@ -114,7 +114,7 @@ lazy val `torchlite-ef-api` = (project in file("."))
       "io.swagger"                    %  "swagger-annotations"              % "1.6.14",
       "org.webjars"                   %  "swagger-ui"                       % "5.17.2",
       "org.scalatestplus.play"        %% "scalatestplus-play"               % "7.0.2"   % Test,
-      "org.seleniumhq.selenium"       %  "htmlunit3-driver"                 % "4.14.0"  % Test
+      "org.seleniumhq.selenium"       %  "htmlunit3-driver"                 % "4.14.1"  % Test
     ),
     routesGenerator := InjectedRoutesGenerator
   )
