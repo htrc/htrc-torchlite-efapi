@@ -116,6 +116,9 @@ lazy val `torchlite-ef-api` = (project in file("."))
       "org.scalatestplus.play"        %% "scalatestplus-play"               % "7.0.1"   % Test,
       "org.seleniumhq.selenium"       %  "htmlunit3-driver"                 % "4.14.1"  % Test
     ),
+    dependencyOverrides ++= Seq(
+      "org.htmlunit"                  % "htmlunit"                          % "3.9.0"
+    ),
     routesGenerator := InjectedRoutesGenerator
   )
 
