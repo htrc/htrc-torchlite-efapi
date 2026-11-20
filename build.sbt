@@ -93,6 +93,8 @@ lazy val swaggerSettings = Seq(
   ))
 )
 
+val jacksonVersion = "2.18.11"
+
 lazy val `torchlite-ef-api` = (project in file("."))
   .enablePlugins(PlayScala, BuildInfoPlugin, GitVersioning, GitBranchPrompt, JavaAppPackaging, DockerPlugin)
   .settings(buildInfoSettings)
@@ -117,7 +119,14 @@ lazy val `torchlite-ef-api` = (project in file("."))
       "org.seleniumhq.selenium"       %  "htmlunit3-driver"                 % "4.14.1"  % Test
     ),
     dependencyOverrides ++= Seq(
-      "org.htmlunit"                  % "htmlunit"                          % "3.9.0"
+      "org.htmlunit"                      %   "htmlunit"                          % "3.9.0",
+      "com.fasterxml.jackson.core"        %   "jackson-core"                      % jacksonVersion,
+      "com.fasterxml.jackson.core"        %   "jackson-databind"                  % jacksonVersion,
+      "com.fasterxml.jackson.datatype"    %   "jackson-datatype-jdk8"             % jacksonVersion,
+      "com.fasterxml.jackson.datatype"    %   "jackson-datatype-jsr310"           % jacksonVersion,
+      "com.fasterxml.jackson.module"      %   "jackson-module-parameter-names"    % jacksonVersion,
+      "com.fasterxml.jackson.module"      %%  "jackson-module-scala"              % jacksonVersion,
+      "com.fasterxml.jackson.dataformat"  %   "jackson-dataformat-cbor"           % jacksonVersion
     ),
     routesGenerator := InjectedRoutesGenerator
   )
